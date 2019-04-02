@@ -6,11 +6,11 @@ void run(){
     {
         for(int j = 0; j < 16; j++)
         {
-           seat[i][j] = " ";
+           //seat[i][j] = " ";
         }
         
     }
-    while(m){
+    while(1){
         cout << "---------------------------- C I N E M A-----------------------------\n\n";
         cout << "Menu : ";
         cout << "1.Choose movie and seat";
@@ -20,15 +20,17 @@ void run(){
         cout << "Menu you choose : ";
         int menu_index;
         cin >> menu_index ;
-        switch (menu_index)
+        /*switch (menu_index)
         {
             case 1
-                break;
+                //break;
         
             default:
                 break;
-        }
+        }*/
     }
     
     
 }
+
+/////////////////// test/ //////////////////////////
