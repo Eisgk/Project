@@ -24,7 +24,7 @@ void writetofile(string username){
  }
 
 void login(){
-    cout << "=============Login=============" << endl ;
+    cout << "============= LOGIN =============" << endl ;
     cout << "Please enter your username: " << endl;
     getline(cin, username);
     cout << "Please enter your password: " << endl;
