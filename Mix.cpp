@@ -86,20 +86,21 @@ void login(){
         const char *A = a.c_str();
         const char *B = b.c_str();
         sscanf(tt,format,&name,&password,&Iseat,&popS,&popM,&popL,&colaS,&colaM,&colaL,&cost);
-        if(*name == *A && *password == *B){
+        if(!stricmp(name,A)&&!stricmp(password,B)){
             pass = true;
             break;
         }
+        else strncpy(name, xname, 20);
 	}
     if(!pass){
         cout << "\nID or Password was worng... Return to main menu...\n";
     }
     else{
         const char *A = a.c_str();
-        *name = *A;
+        strncpy(name, A, 20);
         const char *B = b.c_str();
-        *password = *B;
-        ChooseSeat();
+        strncpy(password, B, 20);
+        change();
     }
 }
 
@@ -108,7 +109,8 @@ void GUI(int x){
         check();
     }
     else if(input==1){
-        login();
+        if(!stricmp(name,xname)) login();
+        else ChooseSeat();
     }
     else if(x == 2){                            // Register
         string ID_Register,Password_Register,Name;
@@ -132,7 +134,8 @@ void GUI(int x){
 	    dest.close();
     }
     else if(x == 3){
-        asset();
+        if(!stricmp(name,xname)) login();
+        else asset();
     }
     else if(x == 4){                    // Exit
         change();
@@ -144,12 +147,12 @@ void GUI(int x){
 int MainMenu(){
         cout << "             -----------------------------------------------------------------        " << endl ;
         cout << "                           ---------------------------------------                    " << endl ;
-        cout << "                                    Welcome To Cinema                                 " << endl ;
+        cout << "                      Welcome To Cinderella Theater  10:00 AM 27/04/2019              " << endl ;
         cout << "                           ---------------------------------------                    " << endl ;
         cout << "             -----------------------------------------------------------------        " << endl ;
-        if(*name != *xname){
+        if(stricmp(name,xname)){
             cout << "                     Log in as " << name << " -> Spend " << cost << "                " << endl ;
-            cout << "             Check[0]     Login[1]     Register[2]     Food&Drnk[3]     Exit[4]          " << endl ;
+            cout << "            Check[0]     Booking[1]     Register[2]     Food&Drnk[3]     Exit[4]          " << endl ;
         }
         else cout << "                Login[1]        Register[2]       Food&Drnk[3]       Exit[4]          " << endl ;
         cout << "Select : " ;
