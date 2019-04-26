@@ -45,7 +45,7 @@ void ChooseSeat(){
     Show();
     int tempseat;        
     int j,i;
-    bool ava;
+    bool ava = true;
     int count = 0;
     do{
         if(count>0) cout << "Please try again.\n";
@@ -59,7 +59,7 @@ void ChooseSeat(){
         }
         else ava = true;
         count++;
-    }
+    }    
     while(i<0||i>7||j<0||j>8||!ava);
     seat[i][j] = true;
     if(Iseat==99) cost += 100;
@@ -192,14 +192,17 @@ void refresh(){
     char a[20];
     char b[20];
     int s;
+    int f[6] = {0};
+    int j,i;
+    int m = colaM;
 	while(getline(source,line)){
         const char *tt = line.c_str();
-        sscanf(tt,format,&a,&b,&s,&popS,&popM,&popL,&colaS,&colaM,&colaL,&cost);
-        int j,i;
+        sscanf(tt,format,&a,&b,&s,&f[0],&f[1],&f[2],&f[3],&f[4],&f[5],&cost);        
         j = s%10;
         i = s/10;
         seat[i][j] = true;
 	}
+    colaM = m;
 }
 
 void change(){
@@ -221,7 +224,7 @@ void change(){
 	while(getline(so,line)){
         const char *tt = line.c_str();
         sscanf(tt,format,&a,&b,&s,&f[0],&f[1],&f[2],&f[3],&f[4],&f[5],&c);
-        if(*name == *a && *password == *b){
+        if(!stricmp(name,a)&&!stricmp(password,b)){
             d << name << " " << password << " " << Iseat << " " << popS << " " << popM << " " << popL << " " << colaS << " " << colaM << " " << colaL << " " << cost << "\n";
         }
         else{
